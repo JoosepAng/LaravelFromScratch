@@ -1,6 +1,9 @@
 <x-layout title="Welcome">
-    <p>{{ $greeting }}, {{ $person }}
+    @forelse ($tasks as $task)
+        <li>{{ $task }}</li>
+    @empty
+        <li>No tasks yet!</li>
+    @endforelse
 
-    </p>
 
 </x-layout>
