@@ -8,11 +8,11 @@
     </div>
 
     <div class="mt-6">
-        <a href="/ideas/{{$idea->id}}/edit" class="text-blue-500 hover:text-blue-700">Edit</a>
+        <a href="/ideas/{{$idea->id}}/edit" class="rounded-md bg-indigo-600 px-3 py-2 hover:not-focus:bg-indigo-700">Edit</a>
         <form action="/ideas/{{$idea->id}}" method="POST" class="inline">
             @csrf
             @method('DELETE')
-            <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+            <button type="submit" class="rounded-md bg-red-600 px-3 py-2 hover:not-focus:bg-indigo-700">Delete</button>
         </form>
     </div>
 

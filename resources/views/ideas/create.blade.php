@@ -10,7 +10,7 @@
 
                 </textarea>
 
-                <x-form.error name="description" />
+                <x-forms.error name="description" />
             </div>
         </div>
         <p class="mt-3 text-sm/6 text-gray-400">Have an idea you like to save for later?</p>
