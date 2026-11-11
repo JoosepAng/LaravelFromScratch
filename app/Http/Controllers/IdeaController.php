@@ -12,11 +12,11 @@ class IdeaController extends Controller
      */
     public function index()
     {
-         $ideas = Idea::all();
+        $ideas = Idea::all();
 
-    return view('ideas.index', [
-        'ideas' => $ideas,
-    ]);
+        return view('ideas.index', [
+            'ideas' => $ideas,
+        ]);
     }
 
     /**
@@ -32,12 +32,16 @@ class IdeaController extends Controller
      */
     public function store(Request $request)
     {
-        Idea::create([
-        'description' => request('description'),
-        'state' => 'pending',
-    ]);
+        $request->validate([
+            'description' => 'required|min:10|max:255',
+        ]);
 
-    return redirect('/');
+        Idea::create([
+            'description' => $request->description,
+            'state' => 'pending',
+        ]);
+
+        return redirect('/');
     }
 
     /**
@@ -46,9 +50,9 @@ class IdeaController extends Controller
     public function show(Idea $idea)
     {
         dd($idea);
-    return view('ideas.show', [
-        'idea' => $idea
-    ]);
+        return view('ideas.show', [
+            'idea' => $idea
+        ]);
     }
 
     /**
@@ -56,9 +60,9 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea)
     {
-         return view('ideas.edit', [
-        'idea' => $idea
-    ]);
+        return view('ideas.edit', [
+            'idea' => $idea
+        ]);
     }
 
     /**
@@ -66,11 +70,11 @@ class IdeaController extends Controller
      */
     public function update(Request $request, Idea $idea)
     {
-         $idea->update([
-        'description' => request('description'),
-    ]);
+        $idea->update([
+            'description' => request('description'),
+        ]);
 
-    return redirect("/ideas/{$idea->id}");
+        return redirect("/ideas/{$idea->id}");
     }
 
     /**
@@ -82,6 +86,6 @@ class IdeaController extends Controller
 
 
 
-    return redirect('/ideas');
+        return redirect('/ideas');
     }
 }
